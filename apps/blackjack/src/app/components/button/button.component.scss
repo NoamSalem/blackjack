@@ -1,0 +1,100 @@
+$primary-gradient: radial-gradient(circle at center, rgba(0,150,55,1), rgba(0,53,31,1),rgba(0,150,55,1));
+$secondary-gradient: radial-gradient(circle at center, rgb(145, 142, 0), rgb(103, 67, 6), rgb(145, 142, 0));
+$warn-gradient: radial-gradient(circle at center, rgb(244, 74, 62), rgb(243, 25, 12), rgb(244, 74, 62));
+$disabled-gradient: radial-gradient(circle at center, rgb(189, 187, 187), rgb(84, 84, 84), rgb(189, 187, 187));
+
+:host[disabled='true'] {
+  pointer-events: none;
+  user-select: none;
+
+  .button {
+    background: $disabled-gradient;
+  }
+}
+
+.button {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 7px solid #D4AF37;
+  background: rgb(0,91,44);
+  background: $primary-gradient;
+  color: #dcd4d4;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.big {
+    width: 140px;
+    height: 140px;
+    font-size: 18px;
+
+    .icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgb(248, 241, 160);
+    transition: all 0.2s ease-out;
+  }
+
+  &.secondary{
+    background: $secondary-gradient;
+  }
+
+  &.warn{
+    background: $warn-gradient;
+  }
+}
+
+.button:hover::before {
+  animation: sh02 0.5s 0s linear;
+}
+
+.button::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.button:active {
+  transition: box-shadow 0.2s ease-in;
+}

@@ -1,0 +1,49 @@
+<div class="game-table">
+
+  <div class="dealer">
+    <ng-container *ngIf="dealerCards.length; else placeholder">
+      <blackjack-card *ngFor="let card of dealerCards" [card]="card"></blackjack-card>
+      <blackjack-card *ngIf="dealerCards.length === 1"></blackjack-card>
+    </ng-container>
+  </div>
+
+  <img class="deck" src="/assets/cards/back.jpg">
+
+  <div class="player">
+    <ng-container *ngIf="playerCards.length; else placeholder">
+      <blackjack-card *ngFor="let card of playerCards" [card]="card"></blackjack-card>
+    </ng-container>
+  </div>
+
+  <div class="chips">
+    <blackjack-chip *ngFor="let chip of chips" [color]="chip.color" [value]="chip.value"></blackjack-chip>
+  </div>
+
+  <div class="wood-panel"></div>
+</div>
+
+<div class="footer">
+  <div class="long-pill">
+    <span class="label">status:</span> {{status}}
+  </div>
+
+  <div>
+    <blackjack-button color="warn" icon="restart" (click)="startGame()">
+      START
+    </blackjack-button>
+
+    <blackjack-button [attr.disabled]="pendingNewGame" color="primary" icon="cards" size="big" (click)="playerHit()">
+      +HIT
+    </blackjack-button>
+    <blackjack-button [attr.disabled]="pendingNewGame" color="secondary" icon="joker" (click)="dealerPlay()">
+      STAND
+    </blackjack-button>
+  </div>
+
+  <blackjack-logo></blackjack-logo>
+</div>
+
+<ng-template #placeholder>
+  <blackjack-card></blackjack-card>
+  <blackjack-card></blackjack-card>
+</ng-template>

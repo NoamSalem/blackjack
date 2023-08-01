@@ -1,0 +1,4 @@
+<div class="card" [ngStyle]="{'background-image': cardAsset ? 'url(assets/cards/' + cardAsset + ')' : faceDownAsset}">
+  <div class="card-value">{{card?.value}}</div>
+  <div class="card-value opposite">{{card?.value}}</div>
+</div>

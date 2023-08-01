@@ -1,0 +1,31 @@
+.card {
+  height: 120px;
+  width: 95px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-size: cover;
+  background-repeat: round;
+  position: relative;
+  display: inline-block;
+  background-color: white;
+}
+
+.card-value {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 0.7rem;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  white-space: pre-line;
+  letter-spacing: -0.1rem;
+}
+
+.opposite {
+  top: unset;
+  left: unset;
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(180deg);
+}
